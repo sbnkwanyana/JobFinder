@@ -1,0 +1,21 @@
+﻿@model IEnumerable<JobListing>
+@{
+    ViewData["Title"] = "Jobs";
+}
+
+<div>
+    <h1 class="display-4">Job Listing</h1>
+        @foreach (var item in Model as IEnumerable<JobListing>)
+        {
+            <div>
+                <h1>@item.Id - @item.Title</h1>
+                <p>@item.Description</p>
+                <p>@item.Company</p>
+                <p>@item.Location</p>
+                <p>@item.DatePosted</p>
+            </div>
+            <form method="Post" asp-controller="Home" asp-action="DeleteJobListing" asp-route-id="@item.Id">
+                  <input type="submit" value="Delete" class="btn btn-danger"/>
+            </form>
+        }
+</div>

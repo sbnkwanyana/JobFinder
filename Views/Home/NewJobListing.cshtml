@@ -1,0 +1,29 @@
+@model JobFinder.JobListings.JobListingModel
+@{
+    ViewData["Title"] = "Jobs";
+}
+
+@* <div class="text-center">
+    <h1 class="display-4">New Job Listing</h1>
+    <form method="post">
+        <label>Job Title: </label> <input name="Title" type="input"><br/>
+        <label>Description: </label> <input name="Description" type="text"/><br/>
+        <label>Company: </label> <input name="Company" type="text"/><br/>
+        <label>Location: </label> <input name="Location" type="text"/><br/>
+        <button type="submit" asp-controller="Home" asp-action="NewJobListing">Submit</button>
+    </form>
+</div> *@
+
+<div asp-validation-summary="ModelOnly"></div>
+
+<form asp-action="NewJobListing">
+  Job Title: <input asp-for="Title" /> <span asp-validation-for="Title"></span>
+  <br />
+  Description: <input asp-for="Description" /> <span asp-validation-for="Description"></span>
+  <br />
+  Company: <input asp-for="Company" /> <span asp-validation-for="Company"></span>
+  <br />
+  Location: <input asp-for="Location" /> <span asp-validation-for="Location"></span>
+  <br /><br />
+  <input type="submit" value="submit" />
+</form>

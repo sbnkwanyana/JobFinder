@@ -24,5 +24,5 @@ public class JobFinderContext : DbContext
         optionsBuilder.UseSqlite(@"Data Source=JobFinderDatabase.db");
     }
 
-    public DbSet<JobListing> JobListings { get; set; }
+    public DbSet<JobListing> JobListings { get; set; } = default!;
 }

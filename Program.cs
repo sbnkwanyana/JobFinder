@@ -20,6 +20,7 @@ builder.Host.UseSerilog((context, configuration) =>
 {
     configuration.ReadFrom.Configuration(context.Configuration);
 });
+builder.Services.AddHttpClient();
 builder.Services.AddHostedService<RepeatingBackgroundService>();
 
 var app = builder.Build();

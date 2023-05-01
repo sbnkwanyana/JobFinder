@@ -4,6 +4,7 @@ using FluentValidation.AspNetCore;
 using FluentValidation;
 using MediatR;
 using Serilog;
+using JobFinder.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,9 +20,9 @@ builder.Host.UseSerilog((context, configuration) =>
 {
     configuration.ReadFrom.Configuration(context.Configuration);
 });
+builder.Services.AddHostedService<RepeatingBackgroundService>();
 
 var app = builder.Build();
-
 
 app.UseSerilogRequestLogging();
 

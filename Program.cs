@@ -24,6 +24,7 @@ var app = builder.Build();
 
 
 app.UseSerilogRequestLogging();
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 

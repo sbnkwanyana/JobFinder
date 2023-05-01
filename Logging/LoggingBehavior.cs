@@ -22,7 +22,7 @@ namespace JobFinder.JobListings;
     }
 } */
 
-public class LoggingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
+public class LoggingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse> where TResponse : notnull
 {
     public readonly ILogger<LoggingBehavior<TRequest, TResponse>> _logger;
 
@@ -36,7 +36,7 @@ public class LoggingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, 
         var start = Stopwatch.GetTimestamp();
         var result = await next();
         var delta = Stopwatch.GetElapsedTime(start);
-        _logger.LogInformation($"Request {typeof(TRequest).Name} took {delta}");
+        _logger.LogInformation("Request {@request} took {@delta}", request.GetType().Name, delta);
         return result;
     }
 }
